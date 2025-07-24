@@ -1,0 +1,5 @@
+SDLC
+Software Tesing Methodology
+Agile Methodology
+CI/CD
+Code Quality
