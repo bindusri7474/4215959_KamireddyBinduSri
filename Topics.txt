@@ -1,4 +1,3 @@
-WEEKONE
 SDLC
 Software Tesing Methodology
 Agile Methodology
