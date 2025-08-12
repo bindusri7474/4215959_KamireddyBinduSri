@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int size;
+    scanf("%d", &size);
+    int bar[size];
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &bar[i]);
+    }
+    int day, month;
+    scanf("%d %d", &day, &month);
+    int count = 0;
+    int sum = 0;
+    for (int i = 0; i < month; i++) {
+        sum += bar[i];
+    }
+    if (sum == day) count++;
+
+    for (int i = month; i < size; i++) {
+        sum += bar[i] - bar[i - month];  
+        if (sum == day) count++;
+    }
+    printf("%d\n", count);
+    return 0;
+}
