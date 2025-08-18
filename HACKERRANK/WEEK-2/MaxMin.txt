@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int cmpFunc(const void *x, const void *y) {
+    return (*(int *)x - *(int *)y);
+}
+int findMinUnfair(int subsetSize, int numbers[], int totalCount) {
+    qsort(numbers, totalCount, sizeof(int), cmpFunc);
+    int bestUnfairness = numbers[subsetSize - 1] - numbers[0];
+    for (int start = 1; start <= totalCount - subsetSize; start++) {
+        int currentUnfairness = numbers[start + subsetSize - 1] - numbers[start];
+        if (currentUnfairness < bestUnfairness) {
+            bestUnfairness = currentUnfairness;
+        }
+    }
+    return bestUnfairness;
+}
+int main() {
+    int totalElements, groupSize;
+    scanf("%d", &totalElements);
+    scanf("%d", &groupSize);
+    int data[totalElements];
+    for (int i = 0; i < totalElements; i++) {
+        scanf("%d", &data[i]);
+    }
+    int answer = findMinUnfair(groupSize, data, totalElements);
+    printf("%d\n", answer);
+    return 0;
+}

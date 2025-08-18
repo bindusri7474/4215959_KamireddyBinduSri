@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int seqCount, queryCount;
+    scanf("%d %d", &seqCount, &queryCount);
+    int **sequences = (int **)malloc(seqCount * sizeof(int *));
+    int *lengths = (int *)calloc(seqCount, sizeof(int));
+    for (int i = 0; i < seqCount; i++) {
+        sequences[i] = NULL;
+    }
+    int lastResult = 0;
+    for (int q = 0; q < queryCount; q++) {
+        int queryType, a, b;
+        scanf("%d %d %d", &queryType, &a, &b);
+        int index = (a ^ lastResult) % seqCount;
+        if (queryType == 1) {
+            sequences[index] = realloc(sequences[index], (lengths[index] + 1) * sizeof(int));
+            sequences[index][lengths[index]++] = b;
+        } else if (queryType == 2) {
+            lastResult = sequences[index][b % lengths[index]];
+            printf("%d\n", lastResult);
+        }
+    }
+}

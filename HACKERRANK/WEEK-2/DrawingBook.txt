@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int calculate(int num1, int num2) {
+    int half2 = num2 / 2;                        
+    int diff = (num1 / 2) - (num2 / 2);          
+    int result = (half2 < diff) ? half2 : diff;  
+    return result;
+}
+int main() {
+    int value1, value2;
+    scanf("%d %d", &value1, &value2);
+    int answer = calculate(value1, value2);
+    printf("%d\n", answer);
+    return 0;
+}

@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+const char* checkBalance(int nums[], int size) {
+    long long sumAll = 0, prefixSum = 0;
+    for (int j = 0; j < size; j++) {
+        sumAll += nums[j];
+    }
+    for (int j = 0; j < size; j++) {
+        long long suffixSum = sumAll - prefixSum - nums[j];
+        if (prefixSum == suffixSum) {
+            return "YES";
+        }
+        prefixSum += nums[j];
+    }
+    return "NO";
+}
+int main() {
+    int testCases;
+    scanf("%d", &testCases);  
+    while (testCases--) {
+        int length;
+        scanf("%d", &length);
+        int numbers[length];    
+        for (int k = 0; k < length; k++) {
+            scanf("%d", &numbers[k]);
+        }     
+        printf("%s\n", checkBalance(numbers, length));
+    }  
+    return 0;
+}
