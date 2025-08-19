@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int bitCount(unsigned long long x) {
+    int bits = 0;
+    while (x) {
+        x &= (x - 1);  
+        bits++;
+    }
+    return bits;
+}
+int main() {
+    int t;
+    scanf("%d", &t); 
+    while (t--) {
+        unsigned long long input;
+        scanf("%llu", &input);     
+        unsigned long long reduced = input - 1;       
+        if (bitCount(reduced) % 2 == 1) {
+            printf("Louise\n");
+        } else {
+            printf("Richard\n");
+        }
+    }  
+    return 0;
+}

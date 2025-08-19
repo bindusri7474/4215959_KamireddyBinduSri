@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+long compute(long x) {
+    if (x == 0) return 1;
+
+    int zeroBits = 0;
+    for (long temp = x; temp > 0; temp >>= 1) {
+        if ((temp % 2) == 0) {
+            zeroBits++;
+        }
+    }
+
+    long result = 1;
+    for (int i = 0; i < zeroBits; i++) {
+        result *= 2;
+    }
+    return result;
+}
+
+int main() {
+    long n;
+    scanf("%ld", &n);
+    printf("%ld\n", compute(n));
+    return 0;
+}
