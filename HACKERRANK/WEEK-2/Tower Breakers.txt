@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    int t; 
+    scanf("%d", &t);
+    while (t--) {
+        int J, H; 
+        scanf("%d %d", &J, &H);
+
+        int champion = (H == 1 || J % 2 == 0) ? 2 : 1;
+        printf("%d\n", champion);
+    }
+    return 0;
+}
